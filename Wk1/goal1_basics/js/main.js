@@ -236,12 +236,12 @@ console.log('------ conditionals ----------');
     - as an example
         if (condition) {
             //block of code or‘actions’
-        };
+        }
 
     - a more practical visual is this:
         if (true) {
             //I get to run!
-        };
+        }
 
     - a condition is a block of 2 values being compared with a comparison operator
         between them - the comparison operator evaluates the comparison and returns
@@ -249,11 +249,14 @@ console.log('------ conditionals ----------');
     - conditions can be used just about anywhere, not just in conditionals and loops
 */
 
-
+    var myVar = 5 > 3;
+    console.log("5 is greater than 3: ", myVar);
 
 /*
      most common comparison operators:
      > < >=  <=  !== ! ==  ===
+
+
      Sort: A-Za-z
 
 
@@ -263,9 +266,12 @@ console.log('------ conditionals ----------');
     conditional syntax:
         if (condition) {
             //block of code or ‘actions’
-         };
+         }
 */
-
+    if (5 > 3) {
+        //execute code here.
+        console.log("5 > 3: True!" )
+    }
 
 
 /*
@@ -279,7 +285,24 @@ console.log('------ conditionals ----------');
 */
 
     // == performs a loose check of two values
+    if ("1" == 1) {
+        console.log("The string of \"1\" == 1: True");
+    }
+    // doesn't compare data type. Looks past the string quotes and compares the number within to the actual typed number
 
+    if (1 == 1) {
+        console.log("The number 1 == 1: True");
+    }
+
+    if ("1" === 1) {
+        console.log("The string of \"1\" === 1: False");
+    }
+    // This does compare the data type so the console.log won't output.
+
+    if ("1" !== 1) {
+        console.log("The string of \"1\" !== 1: True");
+    }
+    // This says the string of 1 and number 1 are NOT equal and prints to the console because it is true.
 
 
 /* ==============================================================
@@ -289,19 +312,46 @@ console.log('------ conditionals ----------');
         //execute this block of code if a is less than b
      }else{
         //execute this block of code
-     };
+     }
 
  ================================================================
  */
 
 
+    if ("a" < "b") {
+        //TRUE: run this code.  With the "" surrounding, it makes a and b into characters and checks them alphabically
+        //a is 1 in the alphabet and b is 2. I tested this with "z" < "b" and it ran the else code.
+        console.log("a is less than b");
+    } else {
+        //FALSE: run this code
+        console.log("if else: the \'IF\' statement is false");
+    }
+
 
     //if - else if - else (allows for multiple options)
 
+    if ("a" > "b") {
+        console.log("a is less than b");
+    } else if ("a" < "c") {
+        console.log("a is less than c");
+    } else if ("a" < "d") {
+        console.log("a is less than d");
+    } else {
+        console.log("if - else if: all others returned false");
+    }
 
 
     //nested conditional statement
+    if ("a" === "a") {
+        if ("b" === "b"){
+            console.log("In Nested if-else / b === b: True");
+        } else {
+            //execute this block of code if the matching "IF" statment is false. No code below because this won't end up running.
+        }
 
+    } else {
+        console.log("Nested contitional: 1st IF returned false");
+    }
 
 
 /* ==============================================================
@@ -321,16 +371,27 @@ console.log('------ conditionals ----------');
  */
 
     //AND logical operator
+    if ( (1 === 1) && ("hi" === "hi") ) {
+        console.log("&& logical operator: both sides = true");
+    }
+//OR logical operator
+    if ( (1 === 1) || ("hi" === "no") ) {
+        console.log("|| logical operator: one side = true");
+    }
 
-
-    //OR logical operator
-
-
-    // ! NOT logical operator
-
+// ! NOT logical operator
+    if ( !(1 === 1) || ("hi" === "no") ) {
+        console.log("! NOT logical operator: left is true converted to NOT");
+    } else {
+        console.log("! NOT logical operator: both sides = false");
+    }
 
     // all logical operators with order of operations
-
+    if (5 < 2 || (1 === 1 && ! (2 == "2" || 5 < 2)) ) {
+        console.log("logical operator: true");
+    } else {
+        console.log("logical operator: false");
+    }
 
 
 /*******************************************
@@ -345,15 +406,15 @@ console.log('------ conditionals ----------');
     1. learn if - else
  ********************************************/
 
-var weather = "Cloudy"
-var bobsMood = ["happy", "sad"];
+    var weather = "Cloudy";
 
-if (weather == "sunny") {
-    console.log(bobsMood[0]);
-} else {
-    console.log(bobsMood[1]);
-}
+    if (weather === "sunny") {
+        bobsMood = "happy";
+    } else {
+        bobsMood = "sad";
+    }
 
+    console.log("If-Else weather: Bobs mood is ", bobsMood);
 
 
 /*******************************************
@@ -372,31 +433,30 @@ if (weather == "sunny") {
     3.  console.log the results after each conditional
  ********************************************/
 
-var weather = "sunny";
-var waves = 10;
+var weather = "overcast";
+var waves = 4;
 
-if (weather == "sunny") {
+if (weather === "sunny") {
     if (waves == 10) {
-        bobsMood = "pumped";
+        Mood = "pumped";
     } else if (waves >= 5 && waves <= 9) {
-        bobsMood = "mellow";
+        Mood = "mellow";
     } else {
-        bobsMood = "bummed";
+        Mood = "bummed";
     }
-} else if (weather == "overcast") {
-    if (waves >= 7 && waves <= 10) {
-        bobsMood = "jackedUp";
+} else if (weather = "overcast") {
+    if (waves >= 7 && waves <=10) {
+        Mood = "jackedUp";
     } else if (waves >= 3 && waves <= 6) {
-        bobsMood = "totally Bummed";
+        Mood = "totally Bummed";
     } else {
-        bobsMood = "not happy";
+        Mood = "not happy";
     }
 } else {
-    bobsMood = "sad";
+    Mood = "sad";
 }
 
-console.log(bobsMood);
-
+console.log("Bob\'s Mood is ", Mood);
 
 /*
     BREAKING A TERNARY CONDITIONAL DOWN TO INDIVIDUAL PIECES
@@ -405,7 +465,7 @@ console.log(bobsMood);
           myVar = a;
        }else{
           myVar = b;
-       };
+       }
 
     - is the same as this:
        myVar = a<b ? a : b;
@@ -418,7 +478,12 @@ console.log(bobsMood);
     - : = false (perform the new statement after the :)
  */
 
+var weather = "Cloudy";
+var mood = (weather === "Sunny" ? "happy" : "sad");
+console.log("Mood: ", mood);
 
+var smile = false;
+console.log("I am " + ( smile === true ? "happy" : "sad" ) + "!!");
 
 /*******************************************
  STUDENT ACTIVITY 5:
@@ -432,7 +497,10 @@ console.log(bobsMood);
     4.  console.log the results
  ********************************************/
 
-
+var temp = 60;
+var weather = "Cloudy";
+var student1 = (weather === "Sunny" ? "happy" : ( temp >= 80 ? "content" : "sad" ));
+console.log ( "The weather is ", weather + ". That makes me ", student1 + "." );
 
 // Functions: (definition, whitespace, invocation, arguments, returns)
 console.log('------Functions ----------');
@@ -445,7 +513,7 @@ console.log('------Functions ----------');
         - as an example:
             function functionName(){
                 //reusable code goes here
-            };
+            }
 
     - basic functions are created, then called when it is needed to run
     - the parenthesis allows us to pass parameters/arguments into the function
@@ -463,7 +531,7 @@ console.log('------Functions ----------');
     - as an example:
         var functionName = function(){
             //reusable code goes here
-        };
+        }
 
     - anonymous functions are created and given a name as the code is run
     - this structure is more common and used more when we get to objects, therefore
@@ -490,7 +558,7 @@ console.log('------Functions ----------');
         - can have any number of parameters passed into a function
 
     - as an example:
-        var identifier = function( var1, var2 ) { //code goes here };
+        var identifier = function( var1, var2 ) { //code goes here }
 
     - two important rules will apply to these new variables..  
         1. if a variable of the same name already exists globally, the global will
@@ -504,7 +572,7 @@ console.log('------Functions ----------');
 
     var myFn = function(var1, var2) {
         console.log( var1 + var2 );
-    };
+    }
 
     - invoking the function (calling) value1 and value 2 are referred to as arguments
         for the function
