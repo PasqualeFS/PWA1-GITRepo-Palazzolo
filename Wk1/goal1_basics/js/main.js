@@ -83,37 +83,76 @@ console.log('------ strings ----------');
 // numbers (definition, concatenation +, math, numbers & strings)
 console.log('------ numbers ----------');
 
+var piDecimal=3.14;
+var pi=314;
+var y=123e5; //12300000
+var z=123e-5; // 0.00123
+
+
     // arithmetic operators:  +, -, /, *, % (modulo)
 
 
     //basic math
+    var counter = 10;
+    console.log("basic math: ", counter + 1);
 
 
     //quick operations with "assignment operator" +=, -=, *=, /=, %=
     //one example below, can show more examples with other assignment operators
-
+    var num1 = 10;
+    var num2 = 5;
+    num1 += num2 // This produces the same result as the next line and is the quick way to get the same result
+    //num1 = num1 + num2;  This produces the same result as the previous line but is lengthy
+    console.log("+=; ", num1);
 
     //increment or decrement numbers by 1 with ++ or --
+    var myNum = 5;
+    console.log("myNum = ", myNum);
+
+    myNum++;
+    console.log("myNum = ", myNum);
+
+    myNum--;
+    console.log("myNum = ", myNum);
+
 
     //this decrements right before it is being used
+    var num = 10;
+    --num;
+    console.log("--num: ", num);
+
 
     //this decrements after it is used
+    //num--;
+    //console.log("num--: ", num);
+
 
     //comment out the above example
     //this decrements after it is being used as well
-
+    console.log("counter--: ", num--);
+    console.log("counter: ", num);
 
     //add a number to a string is always a string
+    var myStr = "6" + 2;
+    console.log("Number + Strings: ", myStr);
 
+    //other math operations like divide and multipy will result in a number
+    var myStr = "6" / 2;
+    console.log("Number / Strings: ", myStr);
 
-    //other math operations will result in a number
+    //order of operations: ( ), *, /, +, - or PEMDAS
+    //Better known as Parenthesis, Exponents, Multiplication, Division, Addition, Subtraction ***DON'T FORGET***
+    var pemdas1 = 4 + (6 * 5 - 10) / 5;
+    console.log("4 + \(6 * 5 - 10\) / 5 = ", pemdas1);
 
-
-    //order of operations: ( ), *, /, +, -
+    var pemdas2 = 4 + 6 * 5 - 10 / 5;
+    console.log("4 + 6 * 5 - 10 / 5 = ", pemdas2);
 
 
     //modulo example
-
+    var num1 = 10;
+    var num2 = 3;
+    console.log("Remainder of 10 / 3 = ", num1%num2);
 
 // arrays: (definition, indexing, getter/setter)
 console.log('------ arrays ----------');
@@ -151,7 +190,8 @@ console.log('------ arrays ----------');
     2.  console.log the sum of all the numbers in an array
 
  ********************************************/
-
+var numbers = [10,50,100,200];
+console.log(numbers[0] + numbers[1] + numbers[2] + numbers[3]);
 
 
 /*******************************************
@@ -169,6 +209,11 @@ console.log('------ arrays ----------');
 
  ********************************************/
 
+var myArray = [];
+myArray[0] = "baseball";
+myArray[1] = "football";
+myArray[2] = "basketball";
+console.log("I like many sports but my favorites are " + myArray[1] + ", " + myArray[2] + " and " + myArray[0] + "!" )
 
  // conditionals: (definition, indexing, math, if, if-else, if-else if, ternary)
 console.log('------ conditionals ----------');
@@ -300,6 +345,14 @@ console.log('------ conditionals ----------');
     1. learn if - else
  ********************************************/
 
+var weather = "Cloudy"
+var bobsMood = ["happy", "sad"];
+
+if (weather == "sunny") {
+    console.log(bobsMood[0]);
+} else {
+    console.log(bobsMood[1]);
+}
 
 
 
@@ -319,7 +372,30 @@ console.log('------ conditionals ----------');
     3.  console.log the results after each conditional
  ********************************************/
 
+var weather = "sunny";
+var waves = 10;
 
+if (weather == "sunny") {
+    if (waves == 10) {
+        bobsMood = "pumped";
+    } else if (waves >= 5 && waves <= 9) {
+        bobsMood = "mellow";
+    } else {
+        bobsMood = "bummed";
+    }
+} else if (weather == "overcast") {
+    if (waves >= 7 && waves <= 10) {
+        bobsMood = "jackedUp";
+    } else if (waves >= 3 && waves <= 6) {
+        bobsMood = "totally Bummed";
+    } else {
+        bobsMood = "not happy";
+    }
+} else {
+    bobsMood = "sad";
+}
+
+console.log(bobsMood);
 
 
 /*
@@ -497,4 +573,3 @@ console.log('------Functions ----------');
  4. return Mood
  5. console.log the Results
  ********************************************/
-
