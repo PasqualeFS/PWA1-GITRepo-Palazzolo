@@ -1,6 +1,6 @@
 /*
-     Name:
-     Date:
+     Name: Pasquale Palazzolo
+     Date: 1/8/2015
      Class & Section:  PWA1-####
      Comments: "Goal 2: JavaScript Practice"
  */
