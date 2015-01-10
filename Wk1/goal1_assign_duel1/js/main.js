@@ -96,12 +96,12 @@ function fight(){
         // The line below prints the results of the function thus far to the console.
         console.log(firstPlayerName + ": " + firstPlayerHealth + " ****** " + secondPlayerName + ": " + secondPlayerHealth);
 
-        // This variable calls the checkWinner function below and stores whether or not a winner has been determined yet.
-        var finalOutcome = checkWinner();
+        // This variable calls the winnerCheck function below and stores whether or not a winner has been determined yet.
+        var finalOutcome = winnerCheck();
 
         console.log(finalOutcome); // This prints the outcome thus far to the console
 
-        // The if statement that follows is set up to see if the checkWinner function results in "no winner yet" and increases the round if there is no winner and alerts with an concatenated string that contains an update of each player's remaining health and that the round has ended.  If the finalOutcome variable is anything but "no winner yet", this if statement alerts with an update of the finalOutcome variable and breaks the function so it does not run again.
+        // The if statement that follows is set up to see if the winnerCheck function results in "no winner yet" and increases the round if there is no winner and alerts with an concatenated string that contains an update of each player's remaining health and that the round has ended.  If the finalOutcome variable is anything but "no winner yet", this if statement alerts with an update of the finalOutcome variable and breaks the function so it does not run again.
         if (finalOutcome === "no winner yet") {
             whichRound++;
             alert(firstPlayerName + ": " + firstPlayerHealth + " ***ROUND: " + whichRound + " Complete*** " + secondPlayerName + ": " + secondPlayerHealth);
@@ -118,8 +118,8 @@ function fight(){
 
 
 //The function below this comment checks to see if a winner has been determined
-function checkWinner(){
-    console.log("in checkWinner function"); // This line prints to the console to show that this function has started to run
+function winnerCheck(){
+    console.log("in winnerCheck function"); // This line prints to the console to show that this function has started to run
 
     var result = "no winner yet"; // This variable holds a string with a notification that neither player has won.
 
@@ -132,7 +132,7 @@ function checkWinner(){
         result = firstPlayerName + " Wins!!!"  // Here is the result where player one wins
     };
 
-    return result; //This returns the result based on the if statement above to checkWinner()
+    return result; //This returns the result based on the if statement above to winnerCheck()
 
 };
 
