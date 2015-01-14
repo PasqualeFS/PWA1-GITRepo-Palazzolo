@@ -1,8 +1,8 @@
 /*
 Student Name: Pasquale V. Palazzolo
 Class: Programming Web Applications I
-Date: 1/9/2015
-Assignment: Week #1 :: { Homework } - ANALYZE Duel #1
+Date: 1/14/2015
+Assignment: Week #2 :: { Homework } - ANALYZE Duel #2
  */
 
 /* Please note that in order to make this assignment my own, I have established the necessary criteria as outlined on the FSO platform
