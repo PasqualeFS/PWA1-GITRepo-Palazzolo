@@ -4,8 +4,6 @@
  Assignment: Week #2 :: { Homework } - ANALYZE Buggy Search v1
  */
 
-
-
 // Create privatized scope using a self-executing function
 (function(){
 
@@ -19,7 +17,7 @@
 	var validate = function(query){    // Fixed: Original contained a misspelled word and too many equal signs
 
 	// Trim whitespace from start and end of search query
-	while(query.charAt(0) = " "){
+	while(query.charAt(0) == " "){   // Fixed: This is a comparison. Requires two equal signs. There was only one.
 		query = query.substring(1, query.length);
 	};
 	while(query.charAt(query.length-1) === "") {
