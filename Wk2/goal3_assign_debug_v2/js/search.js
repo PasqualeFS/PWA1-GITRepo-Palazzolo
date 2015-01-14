@@ -1,3 +1,11 @@
+/*
+ Student Name: Pasquale Palazzolo
+ Date: 1/14/2015
+ Assignment: Week #2 :: { Homework } - ANALYZE Buggy Search v1
+ */
+
+
+
 // Create privatized scope using a self-executing function
 (function(){
 
@@ -8,7 +16,7 @@ currentSearch = ''
 ;
 
 // Validates search query
-var validqte == function(query){     //Change this line to var validate = function(query){ **Misspelled variable and too many = signs (1)
+var validate = function(query){    // Fixed: Original contained a misspelled word and too many equal signs
 
 // Trim whitespace from start and end of search query
 while(query.charAt(0) = " "){
@@ -21,7 +29,7 @@ while(query.charAt(query.length-1) === ""){
 	// Check search length, must have 3 characters
 	if(query.length < 3){
 
-		alert("Your search query is too small, try again.); 		//Closing quote was left out of THIS line (2)
+		alert("Your search query is too small, try again."); //Fixed: Original left off closing quote.
 
 		// (DO NOT FIX THE LINE DIRECTLY BELOW)
 		searchInput.focus();
@@ -111,7 +119,7 @@ for(var i=0, j=db.length; i<j; i++){
 	// THE LINE DIRECTLY BELOW IS CORRECT
 	document.forms[0].onsubmit = function(){
 		var query = searchInput.value;
-		validqte(query);
+		validate(query);
 
 		// return false is needed for most events - this will be reviewed in upcoming course material
 		// THE LINE DIRECTLY BELOW IS CORRECT
