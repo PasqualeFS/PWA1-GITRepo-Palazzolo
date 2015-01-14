@@ -40,45 +40,45 @@ while(query.charAt(query.length-1) === ""){
 };
 
 // Finds search matches
-var search = function(query) // need opening bracket here for this function (3)
+var search = function(query) { // Fixed:  Added opening curly brace here to start this function.
 
-// split the user's search query string into an array
-var queryArray = query.join(" ");
+	// split the user's search query string into an array
+	var queryArray = query.join(" ");
 
-// array to store matched results from database.js
-var results = [];
+	// array to store matched results from database.js
+	var results = [];
 
-// loop through each index of db array
-for(var i=0, j=db.length; i<j; i++){
+	// loop through each index of db array
+	for(var i=0, j=db.length; i<j; i++) {
 
-	// each db[i] is a single video item, each title ends with a pipe "|"
-	// save a lowercase variable of the video title
-	var dbTitleEnd = db[i].indexOf('|');
-	var dbitem = db[i].tolowercase().substring(0, dbTitleEnd);
+		// each db[i] is a single video item, each title ends with a pipe "|"
+		// save a lowercase variable of the video title
+		var dbTitleEnd = db[i].indexOf('|');
+		var dbitem = db[i].tolowercase().substring(0, dbTitleEnd);
 
-	// loop through the user's search query words
-	// save a lowercase variable of the search keyword
-	for(var ii=0, jj=queryArray.length; ii<jj; ii++){
-		var qitem = queryArray[ii].tolowercase();
+		// loop through the user's search query words
+		// save a lowercase variable of the search keyword
+		for (var ii = 0, jj = queryArray.length; ii < jj; ii++) {
+			var qitem = queryArray[ii].tolowercase();
 
-		// is the keyword anywhere in the video title?
-		// If a match is found, push full db[i] into results array
-		var compare = dbitem.indexOf(qitem);
-		if(compare !== -1){
-			results.push(db[i]);
-		};
-		; // missing closing bracket on this line (4)
-		; // missing closing bracket on this line (5)
-		// missing closing bracket and semicolon on this line (6)
-		results.sort();
+			// is the keyword anywhere in the video title?
+			// If a match is found, push full db[i] into results array
+			var compare = dbitem.indexOf(qitem);
+			if (compare !== -1) {
+				results.push(db[i]);
+			};
+		}; // Fixed: Added closing curly brace that was missing before the semicolon
+	}; // Fixed: Added closing curly brace that was missing before the semicolon
 
-		// Check that matches were found, and run output functions
-		if(results.length = 0){
-			noMatch();
-		}else{
-			showMatches(results);
-		};
+	results.sort();
+
+	// Check that matches were found, and run output functions
+	if(results.length = 0){
+		noMatch();
+	}else{
+		showMatches(results);
 	};
+};
 
 	// Put "No Results" message into page (DO NOT FIX THE HTML VAR NOR THE innerHTML)
 	var noMatch = function(){
