@@ -105,3 +105,6 @@ function winnerCheck(){
 /********* The program starts below ********/
 console.log("program starts"); // This sends a message to the console saying the program has started
 fight(); //This executes the fight function from above
+
+
+/* Tested in browser. Functioning as it should */
