@@ -5,59 +5,25 @@ Date: 1/14/2015
 Assignment: Week #2 :: { Homework } - ANALYZE Duel #2
  */
 
-/* Please note that in order to make this assignment my own, I have established the necessary criteria as outlined on the FSO platform
-and rubric but I added some of my own embellishments.
-
-As requested, I created the three variables per player but one major feature of my own is instead of a hard coded name for each, I prompt
-the users to enter names of their choice and verify that names were entered using an if statement.
+/*
+Due to time constraints with my job and child, I opted to remove the prompts for the users and stick to the core
+goals for this project.
  */
 
 
 /* *********************************************************************************************************
-    First establish the health and maximum damage for player one
-    Next, prompt the player asking them to enter their name and store it in a variable
+    First establish the name, health and maximum damage for player one into a single array.
  ********************************************************************************************************* */
 
-//The three variables that follow this comment are specifically for player one
-var firstPlayerHealth = 100;    //This the max health for player one
-var firstPlayerDmg = 22; //This is the maximum amount of damage that player one can do can do to player two
-var firstPlayerName = prompt("First Player: What is your name?");  //This asks player one for their name and stores it
-
-
+//The three variables from week one have been combined into a single array
+var firstPlayer = ["Ernie", 100, 22];
 
 /* *********************************************************************************************************
-    Make sure that the second player enters some kind of value when prompted.
+    Do the same for player two. Establish the name, health and maximum damage into a single array.
  ********************************************************************************************************* */
 
-// The if statement below verifies that Player one entered a value and reloads the whole program if not.
-if (firstPlayerName === "null" || firstPlayerName === "") {
-    alert("Player One must choose a name!");
-    location.reload(true);
-};
-
-
-/* *********************************************************************************************************
-    Do the same for player two. Establish the health and maximum damage.
-    Prompt player in the same way as player one asking for their name and store it in a variable
- ********************************************************************************************************* */
-
-//The three variable that follow this comment are for player two
-var secondPlayerHealth = 100; //This is the max health for player two
-var secondPlayerDmg = 20; //This is the maximum amount of damage that player two can do to player one
-var secondPlayerName = prompt("Second Player: What is your name?");  //This asks player two for their name
-
-
-
-/* *********************************************************************************************************
- Make sure that the second player enters some kind of value when prompted.
- ********************************************************************************************************* */
-
-// The if statement below verifies that Player two entered a value and reloads the whole program if not.
-if (secondPlayerName === "null" || secondPlayerName === "") {
-    alert("Player Two must choose a name!");
-    location.reload(true);
-};
-
+//The three variable from week two have been combined into a single array
+var secondPlayer = ["Peter", 100, 20];
 
 /* *********************************************************************************************************
     Start off the first round of the fight
