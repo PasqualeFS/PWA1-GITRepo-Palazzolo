@@ -1,138 +1,106 @@
-/*
-Student Name: Pasquale V. Palazzolo
-Class: Programming Web Applications I
-Date: 1/21/2015
-Assignment: Week #3 :: { Homework } - ANALYZE Duel #3
- */
 
 /*
-Due to tAll uses of alert() must be removed
- An object with three properties(keys) is created for both fighters. The three properties are:
-
- name
- damage
- health
- Example: fighter1 = {name:Spiderman, damage:20, health:100};
-
- Both fighter objects should be in an array
- Modify fight() function
-
- Since this assignment is now using objects, the code in the fight() function must be modified from the previous version of the assignment to accommodate for this. NO loop will be needed!-since clicking on the button is what triggers the next round.
- Replace the alerts with code that access the DOM(HTML) such as getElemetById and/or querySelector
- Use JavaScript's innerHTML property to change the text in the HTML. The following information will be displayed dynamically in the HTML (view the demonstration again to see how this should look):
- Fighter's name and health at the top
- Current round number above the button
-
- Create a click event on the button
- When the button is clicked, the following should commence:
-
- advance round
- the modified fight() function is called
-
- Disable the button when the game is over and make sure the appropriate "game over message" is shown at the top. The message should be one of the following:
-
- Fighter 1 wins
- Fighter 2 wins
- Both Fighters Die
- Make sure the actual name of the fighter is shown not fighter1 or fighter2. You can always change the message to something else if you want to be more creative.
-
+ Student Name: Pasquale V. Palazzolo
+ Class: Programming Web Applications I
+ Date: 1/21/2015
+ Assignment: Week #3 :: { Homework } - ANALYZE Duel #3
  */
 
 
-/* *********************************************************************************************************
-    First establish the name, health and maximum damage for player one into an object.
- ********************************************************************************************************* */
+(function(){
+    console.log("FIGHT!!!"); //printing to console FIGHT!!!
+    /* *********************************************************************************************************
+     First create an object with three properties(keys) for both fighters
+     ********************************************************************************************************* */
 
-//The three variables from week one have been combined into a single array
-var firstPlayer = {playerName:"Ernie", playerHealth:100, playerDamage:22};
-console.log(firstPlayer.playerName, firstPlayer.playerHealth, firstPlayer.playerDamage);
-/* *********************************************************************************************************
-    Do the same for player two. Establish the name, health and maximum damage into a single array.
- ********************************************************************************************************* */
+    var players = [
+        firstPlayer = { name:"Ernie", damage:20, health:100},  //This is the object for the first player at index 0
+        secondPlayer = { name:"Peter", damage:20, health:100}  //This is the object for the second player at index 1
+    ];
 
-//The three variable from week two have been combined into a single array
-var secondPlayer = {playerName:"Peter", playerHealth:100, playerDamage:20};
-console.log(secondPlayer.playerName, secondPlayer.playerHealth, secondPlayer.playerDamage);
-/* *********************************************************************************************************
-    Start off the first round of the fight
- ********************************************************************************************************* */
+    /* *********************************************************************************************************
+     Start off the first round of the fight
+     ********************************************************************************************************* */
 
-var whichRound = 0; //This variable holds the current fight round. It begins at zero and will increase as the fight goes on using a ++ iterator within a function later in our code.
+    var whichRound = 0; //This variable holds the current fight round. It begins at zero and will increase as the fight goes on using a ++ iterator within a function later in our code.
 
+    /* *********************************************************************************************************
+     Variable for the fight button
+     ********************************************************************************************************* */
+    var button =document.querySelector(".buttonblue");
 
+    /* *********************************************************************************************************
+     Replace alerts by showing health via  innerHTML
+     ********************************************************************************************************* */
+    document.getElementById("ernie").innerHTML = players[0].health;
+    document.getElementById("peter").innerHTML = players[1].health;
 
-/* *********************************************************************************************************
-    Lay out all the rules for each round of the fight
- ********************************************************************************************************* */
+    //The fight function starts below this comment
+    function fight() {
+        /* *********************************************************************************************************
+         Lay out all the rules for each round of the fight
+         ********************************************************************************************************* */
 
-//The function below this comment contains all the elements of the fight action
-function fight(){
-    console.log("In the fight function"); // This line just puts a notification in the console that the function has started to run.
-
-    // The alert below this comment concatenates several of our variables to show the user that the fight has started. It also shows them the two player names that were collected in the variables above and shows the starting health levels of each respective player.
-    alert(firstPlayer[0] + ": " + firstPlayer[1] + " ***FIGHT*** " + secondPlayer[0] + ": " + secondPlayer[1]);
-
-    // This FOR area tells the browser that if "i" is equal to 0 and still less than ten to increase by one. This is what will take our whichRound variable from above and increase it to 1 for the first round.
-    for (var i = 0; i < 10; i++) {
-
-        var minDamage1 = firstPlayer[2] * .5; // This variable takes player one's max dmg (22) and multiplies it by .5 then stores it.
-        var minDamage2 = secondPlayer[2] * .5; // This variable takes player two's max dmg (22) and multiplies it by .5 then stores it.
+        var minDamage1 = players[0].damage * .5; // This variable takes player one's max dmg (22) and multiplies it by .5 then stores it.
+        var minDamage2 = players[1].damage * .5; // This variable takes player two's max dmg (22) and multiplies it by .5 then stores it.
 
         //The variable below uses the rule of PEMDAS to first subtract player one's minimum damage (11) from the max damage (22). It multiplies that by a random number and then adds it to the minimum damage amount while rounding down to the next integer. The result of the equation is stored in the f1 variable.
-        var f1 = Math.floor(Math.random() * (firstPlayer[2] - minDamage1) + minDamage1);
+        var f1 = Math.floor(Math.random() * (players[0].damage - minDamage1) + minDamage1);
 
         //The variable below uses the rule of PEMDAS to first subtract player two's minimum damage (10) from the max damage (20). It multiplies that by a random number and then adds it to the minimum damage amount while rounding down to the next integer. The result of the equation is stored in the f2 variable.
-        var f2 = Math.floor(Math.random() * (secondPlayer[2] - minDamage2) + minDamage2);
+        var f2 = Math.floor(Math.random() * (players[1].damage - minDamage2) + minDamage2);
 
-        firstPlayer[1] -= f1; // This updates our original health for player 1 with the new result of the f1 variable
-        secondPlayer[1] -= f2; // This updates our original health for player 2 with the new result of the f2 variable
-
-        // The line below prints the results of the function thus far to the console.
-        console.log(firstPlayer[0] + ": " + firstPlayer[1] + " ***FIGHT*** " + secondPlayer[0] + ": " + secondPlayer[1]);
+        players[0].health = players[0].health - f1; // This updates our original health for player 1 with the new result of the f1 variable
+        players[1].health = players[1].health - f2; // This updates our original health for player 2 with the new result of the f2 variable
 
         // This variable calls the winnerCheck function below and stores whether or not a winner has been determined yet.
         var finalOutcome = winnerCheck();
-
         console.log(finalOutcome); // This prints the outcome thus far to the console
 
-        // The if statement that follows is set up to see if the winnerCheck function results in "no winner yet" and increases the round if there is no winner and alerts with an concatenated string that contains an update of each player's remaining health and that the round has ended.  If the finalOutcome variable is anything but "no winner yet", this if statement alerts with an update of the finalOutcome variable and breaks the function so it does not run again.
-        if (finalOutcome === "no winner yet") {
-            whichRound++;
-            alert(firstPlayer[0] + ": " + firstPlayer[1] + " ***ROUND: " + whichRound + " Complete*** " + secondPlayer[0] + ": " + secondPlayer[1]);
-        } else {
-            alert(finalOutcome);
-            break;
+            if (finalOutcome === "no winner yet") {
+                whichRound++;
+                document.getElementById("ernie").innerHTML = players[0].health;
+                document.getElementById("peter").innerHTML = players[1].health;
+                document.getElementById("round_number").innerHTML = "Round " + whichRound + ": COMPLETE!";
+            } else {
+                document.getElementById("scores").innerHTML = finalOutcome;
+                document.getElementById("scores").style.textAlign = "center";
+                document.getElementById("round_number").innerHTML = finalOutcome;
+
+                button.innerHTML = "Finished!!!";
+                button.setAttribute('onclick', null);
+            };
+    }; //This is where the fight function ends
+
+    /* *********************************************************************************************************
+     Figure out if there is a winner for the fight
+     ********************************************************************************************************* */
+
+    // This is where the winnerCheck function begins
+    function winnerCheck(){
+        console.log("in winnerCheck function"); // This line prints to the console to show that this function has started to run
+
+        var result = "no winner yet"; // This variable holds a string with a notification that neither player has won.
+
+        // The if statement below says that if player one and player two have both reached a level of health less than one then they have both died.
+        if (players[0].health < 1 && players[1].health < 1) {
+            result="Both players have died!"; // Here is the result where both players die
+        } else if (players[0].health < 1) {  // This else if says that if only player one has health less than one that player two wins
+            result = players[1].name + " Wins!!!" // This is the result where player two wins
+        } else if (players[1].health < 1) { // This else if says that if only player two has health less than one that player one wins
+            result = players[0].name + " Wins!!!"  // Here is the result where player one wins
         };
+
+        return result; //This returns the result based on the if statement above to winnerCheck()
     };
-};
+    // This is where the winnerCheck function ends
 
-/* *********************************************************************************************************
-    Figure out if there is a winner for the fight
- ********************************************************************************************************* */
+    var finalOutcome = winnerCheck();
 
-
-//The function below this comment checks to see if a winner has been determined
-function winnerCheck(){
-    console.log("in winnerCheck function"); // This line prints to the console to show that this function has started to run
-
-    var result = "no winner yet"; // This variable holds a string with a notification that neither player has won.
-
-    // The if statement below says that if player one and player two have both reached a level of health less than one then they have both died.
-    if (firstPlayer[1] < 1 && secondPlayer[1] < 1) {
-        result="Both players have died!"; // Here is the result where both players die
-    } else if (firstPlayer[1] < 1) {  // This else if says that if only player one has health less than one that player two wins
-        result = secondPlayer[0] + " Wins!!!" // This is the result where player two wins
-    } else if (secondPlayer[1] < 1) { // This else if says that if only player two has health less than one that player one wins
-        result = firstPlayer[0] + " Wins!!!"  // Here is the result where player one wins
+    /********* The program starts below ********/
+    button.onclick = function(e) {
+        fight();
+        e.preventDefault();
+        return false;
     };
-
-    return result; //This returns the result based on the if statement above to winnerCheck()
-
-};
-
-/********* The program starts below ********/
-console.log("program starts"); // This sends a message to the console saying the program has started
-fight(); //This executes the fight function from above
-
-
-/* Tested in browser. Functioning as it should */
+})();
