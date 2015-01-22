@@ -6,25 +6,53 @@ Assignment: Week #3 :: { Homework } - ANALYZE Duel #3
  */
 
 /*
-Due to time constraints with my job and child, I opted to remove the prompts for the users and stick to the core
-goals for this project.
+Due to tAll uses of alert() must be removed
+ An object with three properties(keys) is created for both fighters. The three properties are:
+
+ name
+ damage
+ health
+ Example: fighter1 = {name:Spiderman, damage:20, health:100};
+
+ Both fighter objects should be in an array
+ Modify fight() function
+
+ Since this assignment is now using objects, the code in the fight() function must be modified from the previous version of the assignment to accommodate for this. NO loop will be needed!-since clicking on the button is what triggers the next round.
+ Replace the alerts with code that access the DOM(HTML) such as getElemetById and/or querySelector
+ Use JavaScript's innerHTML property to change the text in the HTML. The following information will be displayed dynamically in the HTML (view the demonstration again to see how this should look):
+ Fighter's name and health at the top
+ Current round number above the button
+
+ Create a click event on the button
+ When the button is clicked, the following should commence:
+
+ advance round
+ the modified fight() function is called
+
+ Disable the button when the game is over and make sure the appropriate "game over message" is shown at the top. The message should be one of the following:
+
+ Fighter 1 wins
+ Fighter 2 wins
+ Both Fighters Die
+ Make sure the actual name of the fighter is shown not fighter1 or fighter2. You can always change the message to something else if you want to be more creative.
+
  */
 
 
 /* *********************************************************************************************************
-    First establish the name, health and maximum damage for player one into a single array.
+    First establish the name, health and maximum damage for player one into an object.
  ********************************************************************************************************* */
 
 //The three variables from week one have been combined into a single array
-var firstPlayer = ["Ernie", 100, 22];
-
+var firstPlayer = {playerName:"Ernie", playerHealth:100, playerDamage:22};
+console.log(firstPlayer.playerName, firstPlayer.playerHealth, firstPlayer.playerDamage);
 /* *********************************************************************************************************
     Do the same for player two. Establish the name, health and maximum damage into a single array.
  ********************************************************************************************************* */
 
 //The three variable from week two have been combined into a single array
-var secondPlayer = ["Peter", 100, 20];
-
+var secondPlayer = {playerName:"Peter", playerHealth:100, playerDamage:20};
+console.log(secondPlayer.playerName, secondPlayer.playerHealth, secondPlayer.playerDamage);
 /* *********************************************************************************************************
     Start off the first round of the fight
  ********************************************************************************************************* */
