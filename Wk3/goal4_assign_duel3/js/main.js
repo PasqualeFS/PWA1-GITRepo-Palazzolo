@@ -1,8 +1,8 @@
 /*
 Student Name: Pasquale V. Palazzolo
 Class: Programming Web Applications I
-Date: 1/14/2015
-Assignment: Week #2 :: { Homework } - ANALYZE Duel #2
+Date: 1/21/2015
+Assignment: Week #3 :: { Homework } - ANALYZE Duel #3
  */
 
 /*
