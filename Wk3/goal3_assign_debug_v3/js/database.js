@@ -1,5 +1,5 @@
 var db = [
-	"JavaScript in the Browser|http://wddbs.com/javascript/sfw/online/#p=videos&s=3&file=01.html",
+	"JavaScript in the Browser|http://wddbs.com/javascript/sfw/online/#p=videos&s=3&file=01.html",   // Corrected link by removing extra http:
 	"Script Tag|http://wddbs.com/javascript/sfw/online/#p=videos&s=1&file=02.html",
 	"JavaScript Syntax|http://wddbs.com/javascript/sfw/online/#p=videos&s=1&file=02.html",
 	"Data Type Literals|http://wddbs.com/javascript/sfw/online/#p=videos&s=1&file=02.html",
