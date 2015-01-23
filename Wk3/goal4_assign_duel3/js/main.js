@@ -37,6 +37,10 @@
 
     //The fight function starts below this comment
     function fight() {
+
+        if (players[0].health < 1 && players[1].health < 1) {
+            return false;
+        }
         /* *********************************************************************************************************
          Lay out all the rules for each round of the fight
          ********************************************************************************************************* */
@@ -65,10 +69,11 @@
                 document.getElementById("playerTwo").innerHTML = players[1].name + ": " + players[1].health;
                 document.getElementById("roundUpdate").innerHTML = "Round " + whichRound + ": COMPLETE!";
             } else {
-                document.getElementById("scores").innerHTML = finalOutcome;
-                document.getElementById("scores").style.textAlign = "center";
+                document.getElementById("playerOne").innerHTML = "&nbsp;";
+                document.getElementById("playerTwo").innerHTML = "&nbsp;";
                 document.getElementById("roundUpdate").innerHTML = finalOutcome;
 
+                console.log(button);
                 button.innerHTML = "Finished!!!";
                 button.setAttribute('onclick', null);
             };
@@ -124,5 +129,5 @@
         fight();
         e.preventDefault();
         return false;
-    };
+    }
 })();
