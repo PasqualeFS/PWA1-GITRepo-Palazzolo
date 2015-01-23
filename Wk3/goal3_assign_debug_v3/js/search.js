@@ -41,7 +41,7 @@
 	var search = function(query) { // Fixed:  Added opening curly brace here to start this function.
 
 		// split the user's search query string into an array
-		var queryArray = query.join(" ");
+		var queryArray = query.split(" "); //changed .join to .split in attempt to correct the error here.
 
 		// array to store matched results from database.js
 		var results = [];
@@ -52,12 +52,12 @@
 			// each db[i] is a single video item, each title ends with a pipe "|"
 			// save a lowercase variable of the video title
 			var dbTitleEnd = db[i].indexOf('|');
-			var dbitem = db[i].tolowercase().substring(0, dbTitleEnd);
+			var dbitem = db[i].toLowerCase().substring(0, dbTitleEnd); // camel case was missing from this line. Corrected.
 
 			// loop through the user's search query words
 			// save a lowercase variable of the search keyword
 			for (var ii = 0, jj = queryArray.length; ii < jj; ii++) {
-				var qitem = queryArray[ii].tolowercase();
+				var qitem = queryArray[ii].toLowerCase(); // same issue here as in line 55. Missing proper camel case. Corrected.
 
 				// is the keyword anywhere in the video title?
 				// If a match is found, push full db[i] into results array
@@ -69,6 +69,7 @@
 		}; // Fixed: Added closing curly brace that was missing before the semicolon
 
 		results.sort();
+
 
 		// Check that matches were found, and run output functions
 		if(results.length = 0){
@@ -96,9 +97,10 @@
 				url
 				;
 
+			console.log("what is the value of results.length? Answer: " + results.length);
 			// loop through all the results search() function
 			for(var i=0, j=results.length; i<j; i++){
-
+				console.log("Am I getting to this for loop??");
 				// title of video ends with pipe
 				// pull the title's string using index numbers
 				titleEnd = results[i].indexOf('|');
