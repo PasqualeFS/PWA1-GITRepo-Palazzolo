@@ -27,13 +27,13 @@
     /* *********************************************************************************************************
      Variable for the fight button
      ********************************************************************************************************* */
-    var button =document.querySelector(".buttonblue");
+    var button = document.querySelector(".buttonblue");
 
     /* *********************************************************************************************************
      Replace alerts by showing health via  innerHTML
      ********************************************************************************************************* */
-    document.getElementById("ernie").innerHTML = players[0].health;
-    document.getElementById("peter").innerHTML = players[1].health;
+    document.getElementById("playerOne").innerHTML = players[0].name + ": " + players[0].health;
+    document.getElementById("playerTwo").innerHTML = players[1].name + ": " + players[1].health;
 
     //The fight function starts below this comment
     function fight() {
@@ -41,8 +41,8 @@
          Lay out all the rules for each round of the fight
          ********************************************************************************************************* */
 
-        var minDamage1 = players[0].damage * .5; // This variable takes player one's max dmg (22) and multiplies it by .5 then stores it.
-        var minDamage2 = players[1].damage * .5; // This variable takes player two's max dmg (22) and multiplies it by .5 then stores it.
+        var minDamage1 = players[0].damage * .5; // This variable takes player one's max dmg (20) and multiplies it by .5 then stores it.
+        var minDamage2 = players[1].damage * .5; // This variable takes player two's max dmg (20) and multiplies it by .5 then stores it.
 
         //The variable below uses the rule of PEMDAS to first subtract player one's minimum damage (11) from the max damage (22). It multiplies that by a random number and then adds it to the minimum damage amount while rounding down to the next integer. The result of the equation is stored in the f1 variable.
         var f1 = Math.floor(Math.random() * (players[0].damage - minDamage1) + minDamage1);
@@ -55,17 +55,19 @@
 
         // This variable calls the winnerCheck function below and stores whether or not a winner has been determined yet.
         var finalOutcome = winnerCheck();
+        updateBackground();
+
         console.log(finalOutcome); // This prints the outcome thus far to the console
 
             if (finalOutcome === "no winner yet") {
                 whichRound++;
-                document.getElementById("ernie").innerHTML = players[0].health;
-                document.getElementById("peter").innerHTML = players[1].health;
-                document.getElementById("round_number").innerHTML = "Round " + whichRound + ": COMPLETE!";
+                document.getElementById("playerOne").innerHTML = players[0].name + ": " + players[0].health;
+                document.getElementById("playerTwo").innerHTML = players[1].name + ": " + players[1].health;
+                document.getElementById("roundUpdate").innerHTML = "Round " + whichRound + ": COMPLETE!";
             } else {
                 document.getElementById("scores").innerHTML = finalOutcome;
                 document.getElementById("scores").style.textAlign = "center";
-                document.getElementById("round_number").innerHTML = finalOutcome;
+                document.getElementById("roundUpdate").innerHTML = finalOutcome;
 
                 button.innerHTML = "Finished!!!";
                 button.setAttribute('onclick', null);
@@ -89,15 +91,35 @@
             result = players[1].name + " Wins!!!" // This is the result where player two wins
         } else if (players[1].health < 1) { // This else if says that if only player two has health less than one that player one wins
             result = players[0].name + " Wins!!!"  // Here is the result where player one wins
-        };
+        }
 
         return result; //This returns the result based on the if statement above to winnerCheck()
     };
     // This is where the winnerCheck function ends
 
-    var finalOutcome = winnerCheck();
+    /* *********************************************************************************************************
+         This function changes the background images
+     ********************************************************************************************************* */
 
-    /********* The program starts below ********/
+    function updateBackground(){
+
+        var background = "images/PGfight_bg.png";
+
+        if (players[0].health < 20 && players[1].health < 20) {
+            background = "images/peterErnie2.jpg";
+        } else if (players[0].health < 40 && players[1].health < 40) {
+            background = "images/peterErnie3.png";
+        } else if (players[0].health < 60 && players[1].health < 60) {
+            background = "images/peterErnie4.png";
+        } else if (players[0].health < 80 && players[1].health < 80) {
+            background = "images/peterErnie5.png";
+        }
+
+        document.getElementById("bgChange").src = background;
+
+    };
+
+
     button.onclick = function(e) {
         fight();
         e.preventDefault();
