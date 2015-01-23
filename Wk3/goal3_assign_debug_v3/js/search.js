@@ -72,7 +72,7 @@
 
 
 		// Check that matches were found, and run output functions
-		if(results.length = 0){
+		if(results.length === 0){  //This came up too short with a single =.  I increased it to ===. Corrected.
 			noMatch();
 		}else{
 			showMatches(results);
@@ -97,14 +97,12 @@
 				url
 				;
 
-			console.log("what is the value of results.length? Answer: " + results.length);
 			// loop through all the results search() function
 			for(var i=0, j=results.length; i<j; i++){
-				console.log("Am I getting to this for loop??");
 				// title of video ends with pipe
 				// pull the title's string using index numbers
 				titleEnd = results[i].indexOf('|');
-				title = results[i].subString(0, titleEnd);
+				title = results[i].substring(0, titleEnd);
 
 				// pull the video url after the title
 				url = results[i].substring(results[i].indexOf('|')+1, results[i].length);
@@ -127,3 +125,6 @@
 		}; // Fixed: Added closing curly brace that was missing before the semicolon here.
 
 })();
+
+
+/* This has been browser tested and is fully functional!!! */
